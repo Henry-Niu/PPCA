@@ -40,7 +40,6 @@ int judge[35] = {0};
 unsigned char data[4000001] = {0};
 map<string, int> e_Label, r_Label, _register, _order;
 FILE *pF;
-int Clock = 0;
 
 void init() {
 	_register["$0"] = _register["$zero"] = 0;
