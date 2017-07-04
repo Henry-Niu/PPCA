@@ -2,7 +2,6 @@
 #include<cstring>
 #include<string>
 #include<map>
-#include<cmath>
 using namespace std;
 
 class run_system {
@@ -276,7 +275,8 @@ bool Data_Preparation() {
 		tmp[2].Rdest = _register[order[pos].data[0]];
 		tmp[2].Rsrc1 = _register[order[pos].data[1]];
 		if(judge[tmp[2].Rsrc1]) return false;
-		tmp[2].Src1 = abs(f[tmp[2].Rsrc1]);
+		tmp[2].Src1 = f[tmp[2].Rsrc1];
+		if(tmp[2].Src1 < 0) tmp[2].Src1 = -tmp[2].Src1;
 		return true;
 	}
 	if(now == 1 || now == 4 || now == 10 || now == 14 || 
@@ -297,12 +297,17 @@ bool Data_Preparation() {
 		tmp[2].Rdest = _register[order[pos].data[0]];
 		tmp[2].Rsrc1 = _register[order[pos].data[1]];
 		if(judge[tmp[2].Rsrc1]) return false;
-		tmp[2].Src1 = abs(f[tmp[2].Rsrc1]);
-		if(order[pos].flag) tmp[2].Src2 = abs(order[pos].val);
+		tmp[2].Src1 = f[tmp[2].Rsrc1];
+		if(tmp[2].Src1 < 0) tmp[2].Src1 = -tmp[2].Src1;
+		if(order[pos].flag) {
+			tmp[2].Src2 = order[pos].val;
+			if(tmp[2].Src2 < 0) tmp[2].Src2 = -tmp[2].Src2;
+		}
 		else {
 			tmp[2].Rsrc2 = _register[order[pos].data[2]];
 			if(judge[tmp[2].Rsrc2]) return false;
-			tmp[2].Src2 = abs(f[tmp[2].Rsrc2]);
+			tmp[2].Src2 = f[tmp[2].Rsrc2];
+			if(tmp[2].Src2 < 0) tmp[2].Src2 = -tmp[2].Src2;
 		}
 		return true;
 	}
@@ -337,23 +342,33 @@ bool Data_Preparation() {
 			tmp[2].Rdest = _register[order[pos].data[0]];
 			tmp[2].Rsrc1 = _register[order[pos].data[1]];
 			if(judge[tmp[2].Rsrc1]) return false;
-			tmp[2].Src1 = abs(f[tmp[2].Rsrc1]);
-			if(order[pos].flag) tmp[2].Src2 = abs(order[pos].val);
+			tmp[2].Src1 = f[tmp[2].Rsrc1];
+			if(tmp[2].Src1 < 0) tmp[2].Src1 = -tmp[2].Src1;
+			if(order[pos].flag) {
+				tmp[2].Src2 = order[pos].val;
+				if(tmp[2].Src2 < 0) tmp[2].Src2 = -tmp[2].Src2;
+			}
 			else {
 				tmp[2].Rsrc2 = _register[order[pos].data[2]];
 				if(judge[tmp[2].Rsrc2]) return false;
-				tmp[2].Src2 = abs(f[tmp[2].Rsrc2]);
+				tmp[2].Src2 = f[tmp[2].Rsrc2];
+				if(tmp[2].Src2 < 0) tmp[2].Src2 = -tmp[2].Src2;
 			}
 		} else {
 			tmp[2].Rdest = _register["$lo"];
 			tmp[2].Rsrc1 = _register[order[pos].data[0]];
 			if(judge[tmp[2].Rsrc1]) return false;
-			tmp[2].Src1 = abs(f[tmp[2].Rsrc1]);
-			if(order[pos].flag) tmp[2].Src2 = abs(order[pos].val);
+			tmp[2].Src1 = f[tmp[2].Rsrc1];
+			if(tmp[2].Src1 < 0) tmp[2].Src1 = -tmp[2].Src1;
+			if(order[pos].flag) {
+				tmp[2].Src2 = order[pos].val;
+				if(tmp[2].Src2 < 0) tmp[2].Src2 = -tmp[2].Src2;
+			}
 			else {
 				tmp[2].Rsrc2 = _register[order[pos].data[1]];
 				if(judge[tmp[2].Rsrc2]) return false;
-				tmp[2].Src2 = abs(f[tmp[2].Rsrc2]);
+				tmp[2].Src2 = f[tmp[2].Rsrc2];
+				if(tmp[2].Src2 < 0) tmp[2].Src2 = -tmp[2].Src2;
 			}
 		}
 		return true;
