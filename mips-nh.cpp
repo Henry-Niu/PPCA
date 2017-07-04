@@ -451,7 +451,7 @@ bool Data_Preparation() {
 
 void Execution() {
 	int now = tmp[3].Pos;
-	long long x, y, z = 1;
+	long long x, y;
 	switch (_order[order[now].op]) {
 		case 1  :
 			tmp[3].Result = tmp[3].Src1 + tmp[3].Src2;	
@@ -636,7 +636,7 @@ void Memory_Access() {
 					while(data[a] != 0) printf("%c", data[a++]);
 					break;
 				case 5 :
-					fscanf(stdin, "%d", &tmp[4].Result);
+					fscanf(stdin, "%lld", &tmp[4].Result);
 					break;
 				case 8 :
 					fscanf(stdin, "%s", c_tmp);
